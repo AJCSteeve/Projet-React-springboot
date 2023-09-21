@@ -1,3 +1,9 @@
+body {
+  background-image: url('./pics/pexels-jennifer-polanco-3925081.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .App {
   text-align: center;
 }

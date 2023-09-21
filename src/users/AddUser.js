@@ -1,6 +1,7 @@
 import {useState} from "react";
 import axios from "axios";
 import {NavLink, useNavigate} from "react-router-dom";
+import './AddUser.css';
 
 
 export default function AddUser(){
@@ -9,11 +10,11 @@ export default function AddUser(){
 
     const [user,setUser]= useState({
         username:"",
-        phoneNumber:"",
+        password:"",
         email:""
     });
 
-    const{username, phoneNumber, email}=user;
+    const{username, password, email}=user;
 
     const onInputChange = (event) => {
         const { name, value } = event.target;
@@ -45,13 +46,13 @@ export default function AddUser(){
                 </div>
                 <div className="mb-3">
                     <label htmlFor="phoneNumber" className="form-label">
-                        Phone number
+                        Password
                     </label>
                     <input type={"text"}
                            className="form-control"
                            placeholder="Veuillez entrer un numéro de téléphone svp"
-                           name="phoneNumber"
-                           value={phoneNumber}
+                           name="password"
+                           value={password}
                            onChange={(event)=>onInputChange(event)}/>
                 </div>
                 <div className="mb-3">

@@ -1,8 +1,8 @@
 import axios from "axios";
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {NavLink, useParams} from "react-router-dom";
 
-export default function Home(){
+export default function Users(){
 
     const [users,setUsers]= useState([])
 
@@ -17,10 +17,10 @@ export default function Home(){
         setUsers(result.data);
     };
 
-    const deleteUser=async (id)=>{
-        await axios.delete(`http://localhost:8080/api/users/${id}`)
-        loadUsers()
-    }
+    const deleteUser = useCallback(async (id) => {
+        await axios.delete(`http://localhost:8080/api/users/${id}`);
+        loadUsers();
+    }, [loadUsers]);
 
 
 
@@ -32,29 +32,20 @@ export default function Home(){
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Username</th>
-                        {/*<th scope="col">Phone Number</th>*/}
-                        {/*<th scope="col">PhotoUrl</th>*/}
-                        {/*<th scope="col">@ email</th>*/}
-                        {/*<th scope="col">Content(s)</th>*/}
                         <th scope="col">Edition</th>
                     </tr>
                     </thead>
                     <tbody>
                     {
-                        users.map((user,index)=>(
-                        <tr>
-                        <th scope="row" key={index}>{index+1}</th>
+                        users.map((user)=>(
+                        <tr key={user.id}>
+                        <th scope="row">{user.id}</th>
                         <td>{user.username}</td>
-                        {/*<td>{user.phoneNumber}</td>*/}
-                        {/*<td>{user.photoUrl}</td>*/}
-                        {/*<td>{user.email}</td>*/}
-                        {/*<td>{user.contentList}</td>*/}
                         <td>
                             <NavLink className="btn btn-success mx-2"to={`/viewuser/${user.id}`}>Consulter</NavLink>
                             <NavLink className="btn btn-outline-primary mx-2"to={`/edituser/${user.id}`}>Modifier</NavLink>
                             <button className="btn btn-danger mx-2" onClick={()=>deleteUser(user.id)}>Effacer</button>
                         </td>
-
                         </tr>
                         ))
                     }

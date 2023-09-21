@@ -16,7 +16,11 @@ export default function Navbar(){
 
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <NavLink className="btn btn-outline-dark" to="/adduser">Add User</NavLink>
+                    <NavLink className="btn btn-secondary" to="/">Acceuil</NavLink>
+                    <NavLink className="btn btn-secondary" to="/createpost">Ajouter un post</NavLink>
+                    <NavLink className="btn btn-secondary" to="/posts">Voir les posts</NavLink>
+                    <NavLink className="btn btn-secondary" to="/adduser">Ajouter un utilisateur</NavLink>
+                    <NavLink className="btn btn-secondary" to="/users">Voir les utilisateurs</NavLink>
                 </div>
             </nav>
 
