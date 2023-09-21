@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import PostCard from "./PostCard";
 
 export default function Posts() {
     const [posts, setPosts] = useState([]);
@@ -15,20 +16,10 @@ export default function Posts() {
     }, []);
 
     return (
-        <div>
+        <div className="row">
             {posts.map((post) => (
-                <div key={post.id}>
-                    <h2>{post.contentName}</h2>
-                    <p>{post.description}</p>
-                    {post.contentType === 'PHOTO' && (
-                        <img src={`data:image/jpeg;base64,${post.contentData}`} alt="Photo" />
-                    )}
-                    {post.contentType === 'VIDEO' && (
-                        <video controls>
-                            <source src={`data:video/mp4;base64,${post.contentData}`} type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
-                    )}
+                <div key={post.id} className="col-md-4 mb-4">
+                    <PostCard content={post} />
                 </div>
             ))}
         </div>
